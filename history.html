@@ -74,8 +74,9 @@
                     <div class="timeline-date">2026年01月16日</div>
                     <div class="timeline-content">
                         <h3>市府同意籌組更新會</h3>
-                        <a href="downloads.html#doc-approval" class="btn-link"><i class="fa-solid fa-file-pdf"></i>
-                            檢視函文</a>
+                        <a href="javascript:void(0)"
+                            onclick="showDocument('市府同意籌組更新會函 (2026/01/16)', '1lZM-iXoYYi3_GxOmJWzhnHNus8FoYBN0', 'pdf')"
+                            class="btn-link"><i class="fa-solid fa-file-pdf"></i> 檢視函文</a>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -83,7 +84,9 @@
                     <div class="timeline-date">2025年10月28日</div>
                     <div class="timeline-content">
                         <h3>市府同意自行劃定更新單元</h3>
-                        <a href="downloads.html#doc-unit" class="btn-link"><i class="fa-solid fa-file-pdf"></i> 檢視函文</a>
+                        <a href="javascript:void(0)"
+                            onclick="showDocument('市府同意自行劃定更新單元函 (2025/10/28)', '1V2oQYc0tY81G3x17v0pIn-2bc0lpayZK', 'pdf')"
+                            class="btn-link"><i class="fa-solid fa-file-pdf"></i> 檢視函文</a>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -98,9 +101,27 @@
                     <div class="timeline-date">2025年02月22日</div>
                     <div class="timeline-content">
                         <h3>申請自行劃定範圍說明會</h3>
-                        <a href="downloads.html#doc-meeting" class="btn-link"><i class="fa-solid fa-file-word"></i>
-                            檢視會議記錄</a>
+                        <a href="javascript:void(0)"
+                            onclick="showDocument('申請自行劃定範圍說明會會議記錄 (2025/02/22)', '11IWNcV1BbTV96ViHapItk7WDPGjV20gT', 'word')"
+                            class="btn-link"><i class="fa-solid fa-file-word"></i> 檢視會議記錄</a>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Document Viewer Section (Hidden by default) -->
+        <section id="dynamic-viewer-section" class="fade-in-up" style="display: none;">
+            <div class="download-item">
+                <div class="download-header">
+                    <h3 id="viewer-title" class="download-title"><i id="viewer-icon" class="fa-solid fa-file-pdf"></i>
+                        <span id="viewer-text">載入中...</span>
+                    </h3>
+                    <a id="viewer-download-btn" href="#" target="_blank" class="btn-download">
+                        <i class="fa-solid fa-download"></i> <span id="viewer-btn-text">直接下載</span>
+                    </a>
+                </div>
+                <div class="iframe-container">
+                    <iframe id="viewer-iframe" src=""></iframe>
                 </div>
             </div>
         </section>
@@ -124,7 +145,7 @@
         </div>
     </footer>
 
-    <!-- Simple script for scroll animations -->
+    <!-- Simple script for animations and dynamic viewer -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const observerOptions = {
@@ -151,14 +172,46 @@
                 el.classList.add('fade-in-up');
                 observer.observe(el);
             });
-
-            document.querySelectorAll('.card').forEach((el, index) => {
-                el.style.transitionDelay = `${index * 0.15}s`;
-                el.classList.add('fade-in-up');
-                observer.observe(el);
-            });
         });
+
+        // Function to dynamically load a document into the viewer
+        function showDocument(title, driveId, type) {
+            const viewerSection = document.getElementById('dynamic-viewer-section');
+            const viewerText = document.getElementById('viewer-text');
+            const viewerIcon = document.getElementById('viewer-icon');
+            const viewerIframe = document.getElementById('viewer-iframe');
+            const downloadBtn = document.getElementById('viewer-download-btn');
+            const btnText = document.getElementById('viewer-btn-text');
+
+            // Update content
+            viewerText.textContent = title;
+            viewerIframe.src = `https://drive.google.com/file/d/${driveId}/preview`;
+            downloadBtn.href = `https://drive.google.com/file/d/${driveId}/view?usp=drive_link`;
+
+            // Update icons and text based on type
+            if (type === 'word') {
+                viewerIcon.className = 'fa-solid fa-file-word';
+                btnText.textContent = '直接下載 Word';
+            } else {
+                viewerIcon.className = 'fa-solid fa-file-pdf';
+                btnText.textContent = '直接下載 PDF';
+            }
+
+            // Show section and add animation class
+            viewerSection.style.display = 'block';
+
+            // Allow display change to render before adding opacity class
+            setTimeout(() => {
+                viewerSection.classList.add('visible');
+
+                // Scroll to viewer smoothly, with an offset for the fixed navbar
+                const yOffset = -120;
+                const y = viewerSection.getBoundingClientRect().top + window.scrollY + yOffset;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            }, 50);
+        }
     </script>
 </body>
+
 
 </html>
