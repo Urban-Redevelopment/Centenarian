@@ -109,22 +109,26 @@
             </div>
         </section>
 
-        <!-- Dynamic Document Viewer Section (Hidden by default) -->
-        <section id="dynamic-viewer-section" class="fade-in-up" style="display: none;">
-            <div class="download-item">
-                <div class="download-header">
-                    <h3 id="viewer-title" class="download-title"><i id="viewer-icon" class="fa-solid fa-file-pdf"></i>
-                        <span id="viewer-text">載入中...</span>
-                    </h3>
-                    <a id="viewer-download-btn" href="#" target="_blank" class="btn-download">
-                        <i class="fa-solid fa-download"></i> <span id="viewer-btn-text">直接下載</span>
+        <!-- Document Viewer Overlay -->
+        <div id="documentOverlay" class="document-viewer-overlay">
+            <div class="overlay-header">
+                <h3 class="overlay-title">
+                    <i id="overlayIcon" class="fa-solid fa-file-pdf"></i>
+                    <span id="overlayTitle">載入中...</span>
+                </h3>
+                <div class="overlay-actions">
+                    <a id="overlayDownloadBtn" href="#" target="_blank" class="btn-download">
+                        <i class="fa-solid fa-download"></i> <span id="overlayBtnText">直接下載</span>
                     </a>
-                </div>
-                <div class="iframe-container">
-                    <iframe id="viewer-iframe" src=""></iframe>
+                    <button onclick="closeDocumentOverlay()" class="btn-close-overlay">
+                        <i class="fa-solid fa-xmark"></i> 返回
+                    </button>
                 </div>
             </div>
-        </section>
+            <div class="overlay-content">
+                <iframe id="overlayIframe" src=""></iframe>
+            </div>
+        </div>
 
     </main>
 
@@ -174,44 +178,48 @@
             });
         });
 
-        // Function to dynamically load a document into the viewer
+        // Function to dynamically load a document into the full-screen overlay
         function showDocument(title, driveId, type) {
-            const viewerSection = document.getElementById('dynamic-viewer-section');
-            const viewerText = document.getElementById('viewer-text');
-            const viewerIcon = document.getElementById('viewer-icon');
-            const viewerIframe = document.getElementById('viewer-iframe');
-            const downloadBtn = document.getElementById('viewer-download-btn');
-            const btnText = document.getElementById('viewer-btn-text');
+            const overlay = document.getElementById('documentOverlay');
+            const overlayTitle = document.getElementById('overlayTitle');
+            const overlayIcon = document.getElementById('overlayIcon');
+            const overlayIframe = document.getElementById('overlayIframe');
+            const downloadBtn = document.getElementById('overlayDownloadBtn');
+            const btnText = document.getElementById('overlayBtnText');
 
             // Update content
-            viewerText.textContent = title;
-            viewerIframe.src = `https://drive.google.com/file/d/${driveId}/preview`;
+            overlayTitle.textContent = title;
+            overlayIframe.src = `https://drive.google.com/file/d/${driveId}/preview`;
             downloadBtn.href = `https://drive.google.com/file/d/${driveId}/view?usp=drive_link`;
 
             // Update icons and text based on type
             if (type === 'word') {
-                viewerIcon.className = 'fa-solid fa-file-word';
+                overlayIcon.className = 'fa-solid fa-file-word';
                 btnText.textContent = '直接下載 Word';
             } else {
-                viewerIcon.className = 'fa-solid fa-file-pdf';
+                overlayIcon.className = 'fa-solid fa-file-pdf';
                 btnText.textContent = '直接下載 PDF';
             }
 
-            // Show section and add animation class
-            viewerSection.style.display = 'block';
+            // Show overlay and prevent body scrolling
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
 
-            // Allow display change to render before adding opacity class
+        function closeDocumentOverlay() {
+            const overlay = document.getElementById('documentOverlay');
+            const overlayIframe = document.getElementById('overlayIframe');
+
+            // Hide overlay and restore body scrolling
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+
+            // Clear iframe source to stop loading/playback in background
             setTimeout(() => {
-                viewerSection.classList.add('visible');
-
-                // Scroll to viewer smoothly, with an offset for the fixed navbar
-                const yOffset = -120;
-                const y = viewerSection.getBoundingClientRect().top + window.scrollY + yOffset;
-                window.scrollTo({ top: y, behavior: 'smooth' });
-            }, 50);
+                overlayIframe.src = '';
+            }, 300);
         }
     </script>
 </body>
-
 
 </html>

@@ -67,13 +67,15 @@
             <div id="notice" class="download-item">
                 <div class="download-header">
                     <h3 class="download-title"><i class="fa-solid fa-file-pdf"></i> 更新會成立大會通知書</h3>
+                    <button onclick="openDocumentOverlay('更新會成立大會通知書', '14uZ_hAbhzh3TUvnK38g-MwdL3AjYZsJN', 'pdf')"
+                        class="btn-download"
+                        style="background-color: var(--secondary-color); color: var(--white); cursor: pointer; border: none; font-family: inherit;">
+                        <i class="fa-solid fa-eye"></i> 線上預覽
+                    </button>
                     <a href="https://drive.google.com/file/d/14uZ_hAbhzh3TUvnK38g-MwdL3AjYZsJN/view?usp=drive_link"
                         target="_blank" class="btn-download">
                         <i class="fa-solid fa-download"></i> 直接下載 PDF
                     </a>
-                </div>
-                <div class="iframe-container">
-                    <iframe src="https://drive.google.com/file/d/14uZ_hAbhzh3TUvnK38g-MwdL3AjYZsJN/preview"></iframe>
                 </div>
             </div>
 
@@ -81,13 +83,15 @@
             <div id="proxy" class="download-item">
                 <div class="download-header">
                     <h3 class="download-title"><i class="fa-solid fa-file-signature"></i> 成立大會委託書</h3>
+                    <button onclick="openDocumentOverlay('成立大會委託書', '1zunl77svv8vf628GS_qQIbWuYi9aeeai', 'pdf')"
+                        class="btn-download"
+                        style="background-color: var(--secondary-color); color: var(--white); cursor: pointer; border: none; font-family: inherit;">
+                        <i class="fa-solid fa-eye"></i> 線上預覽
+                    </button>
                     <a href="https://drive.google.com/file/d/1zunl77svv8vf628GS_qQIbWuYi9aeeai/view?usp=drive_link"
                         target="_blank" class="btn-download">
                         <i class="fa-solid fa-download"></i> 直接下載 PDF
                     </a>
-                </div>
-                <div class="iframe-container">
-                    <iframe src="https://drive.google.com/file/d/1zunl77svv8vf628GS_qQIbWuYi9aeeai/preview"></iframe>
                 </div>
             </div>
         </section>
@@ -158,7 +162,28 @@
         </div>
     </footer>
 
-    <!-- Simple script for scroll animations -->
+    <!-- Document Viewer Overlay -->
+    <div id="documentOverlay" class="document-viewer-overlay">
+        <div class="overlay-header">
+            <h3 class="overlay-title">
+                <i id="overlayIcon" class="fa-solid fa-file-pdf"></i>
+                <span id="overlayTitle">載入中...</span>
+            </h3>
+            <div class="overlay-actions">
+                <a id="overlayDownloadBtn" href="#" target="_blank" class="btn-download">
+                    <i class="fa-solid fa-download"></i> <span id="overlayBtnText">直接下載</span>
+                </a>
+                <button onclick="closeDocumentOverlay()" class="btn-close-overlay">
+                    <i class="fa-solid fa-xmark"></i> 返回
+                </button>
+            </div>
+        </div>
+        <div class="overlay-content">
+            <iframe id="overlayIframe" src=""></iframe>
+        </div>
+    </div>
+
+    <!-- Simple script for scroll animations and overlay -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const observerOptions = {
@@ -180,6 +205,48 @@
                 observer.observe(el);
             });
         });
+
+        // Overlay Functions
+        function openDocumentOverlay(title, driveId, type) {
+            const overlay = document.getElementById('documentOverlay');
+            const overlayTitle = document.getElementById('overlayTitle');
+            const overlayIcon = document.getElementById('overlayIcon');
+            const overlayIframe = document.getElementById('overlayIframe');
+            const downloadBtn = document.getElementById('overlayDownloadBtn');
+            const btnText = document.getElementById('overlayBtnText');
+
+            // Update content
+            overlayTitle.textContent = title;
+            overlayIframe.src = `https://drive.google.com/file/d/${driveId}/preview`;
+            downloadBtn.href = `https://drive.google.com/file/d/${driveId}/view?usp=drive_link`;
+
+            // Update icons and text based on type
+            if (type === 'word') {
+                overlayIcon.className = 'fa-solid fa-file-word';
+                btnText.textContent = '直接下載 Word';
+            } else {
+                overlayIcon.className = 'fa-solid fa-file-pdf';
+                btnText.textContent = '直接下載 PDF';
+            }
+
+            // Show overlay and prevent body scrolling
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDocumentOverlay() {
+            const overlay = document.getElementById('documentOverlay');
+            const overlayIframe = document.getElementById('overlayIframe');
+
+            // Hide overlay and restore body scrolling
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+
+            // Clear iframe source to stop loading/playback in background
+            setTimeout(() => {
+                overlayIframe.src = '';
+            }, 300);
+        }
     </script>
 </body>
 
