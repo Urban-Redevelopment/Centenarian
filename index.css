@@ -232,13 +232,13 @@ h4 {
 }
 
 .main-title {
-    font-size: 5rem;
+    font-size: 3.5rem;
     font-weight: 900;
     letter-spacing: 12px;
     text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     display: inline-block;
-    padding: 15px 40px;
+    padding: 10px 30px;
     background: rgba(255, 255, 255, 0.95);
     color: var(--primary-dark);
     border-radius: var(--radius-md);
@@ -253,7 +253,8 @@ h4 {
 
 .hero.hero-small .main-title {
     font-size: 2.2rem;
-    padding: 8px 20px;
+    padding: 4px 15px;
+    /* Shrink white box, keep font-size */
     margin-bottom: 1rem;
     letter-spacing: 5px;
 }
@@ -270,14 +271,24 @@ h4 {
     font-size: 0.75rem;
 }
 
+.hero.hero-small .hero-subtitle {
+    padding: 6px 15px;
+    /* Shrink dark box on subpages */
+}
+
 .hero-subtitle {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.3rem;
+    background: rgba(0, 0, 0, 0.4);
+    display: inline-flex;
+    padding: 10px 25px;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .hero-subtitle h2 {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     font-weight: 300;
     letter-spacing: 2px;
     color: rgba(255, 255, 255, 0.95);
@@ -285,17 +296,17 @@ h4 {
 }
 
 .hero-subtitle h3 {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     font-weight: 400;
     color: rgba(255, 255, 255, 0.85);
     margin-bottom: 0;
 }
 
 .hero-subtitle h4 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 500;
     color: var(--accent-color);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.2rem;
     letter-spacing: 4px;
 }
 
