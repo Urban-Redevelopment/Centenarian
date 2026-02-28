@@ -25,8 +25,12 @@
                 <li class="dropdown">
                     <a href="downloads.html" class="dropdown-toggle">表單下載 <i class="fa-solid fa-chevron-down"></i></a>
                     <ul class="dropdown-menu">
-                        <li><a href="downloads.html#notice">更新會成立大會通知書</a></li>
-                        <li><a href="downloads.html#proxy">成立大會委託書下載</a></li>
+                        <li><a href="javascript:void(0)"
+                                onclick="openDocumentOverlay('更新會成立大會通知書', '14uZ_hAbhzh3TUvnK38g-MwdL3AjYZsJN', 'pdf')">更新會成立大會通知書</a>
+                        </li>
+                        <li><a href="javascript:void(0)"
+                                onclick="openDocumentOverlay('成立大會委託書', '1zunl77svv8vf628GS_qQIbWuYi9aeeai', 'pdf')">成立大會委託書下載</a>
+                        </li>
                     </ul>
                 </li>
                 <li><a href="articles.html" class="active">更新會章程</a></li>
@@ -90,7 +94,28 @@
         </div>
     </footer>
 
-    <!-- Simple script for scroll animations -->
+    <!-- Document Viewer Overlay -->
+    <div id="documentOverlay" class="document-viewer-overlay">
+        <div class="overlay-header">
+            <h3 class="overlay-title">
+                <i id="overlayIcon" class="fa-solid fa-file-pdf"></i>
+                <span id="overlayTitle">載入中...</span>
+            </h3>
+            <div class="overlay-actions">
+                <a id="overlayDownloadBtn" href="#" target="_blank" class="btn-download">
+                    <i class="fa-solid fa-download"></i> <span id="overlayBtnText">直接下載</span>
+                </a>
+                <button onclick="closeDocumentOverlay()" class="btn-close-overlay">
+                    <i class="fa-solid fa-xmark"></i> 返回
+                </button>
+            </div>
+        </div>
+        <div class="overlay-content">
+            <iframe id="overlayIframe" src=""></iframe>
+        </div>
+    </div>
+
+    <!-- Simple script for scroll animations and overlay -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const observerOptions = {
@@ -112,6 +137,48 @@
                 observer.observe(el);
             });
         });
+
+        // Overlay Functions
+        function openDocumentOverlay(title, driveId, type) {
+            const overlay = document.getElementById('documentOverlay');
+            const overlayTitle = document.getElementById('overlayTitle');
+            const overlayIcon = document.getElementById('overlayIcon');
+            const overlayIframe = document.getElementById('overlayIframe');
+            const downloadBtn = document.getElementById('overlayDownloadBtn');
+            const btnText = document.getElementById('overlayBtnText');
+
+            // Update content
+            overlayTitle.textContent = title;
+            overlayIframe.src = `https://drive.google.com/file/d/${driveId}/preview`;
+            downloadBtn.href = `https://drive.google.com/file/d/${driveId}/view?usp=drive_link`;
+
+            // Update icons and text based on type
+            if (type === 'word') {
+                overlayIcon.className = 'fa-solid fa-file-word';
+                btnText.textContent = '直接下載 Word';
+            } else {
+                overlayIcon.className = 'fa-solid fa-file-pdf';
+                btnText.textContent = '直接下載 PDF';
+            }
+
+            // Show overlay and prevent body scrolling
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDocumentOverlay() {
+            const overlay = document.getElementById('documentOverlay');
+            const overlayIframe = document.getElementById('overlayIframe');
+
+            // Hide overlay and restore body scrolling
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+
+            // Clear iframe source to stop loading/playback in background
+            setTimeout(() => {
+                overlayIframe.src = '';
+            }, 300);
+        }
     </script>
 </body>
 
