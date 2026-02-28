@@ -88,7 +88,6 @@ h4 {
     width: 100%;
     z-index: 1000;
     background-color: #EEF1F3 !important;
-    border-top: 35px solid #483838 !important;
     border-bottom: 20px solid #577382 !important;
     padding: 0;
     box-shadow: var(--shadow-sm);
@@ -150,7 +149,7 @@ h4 {
 
 .dropdown-menu {
     position: absolute;
-    top: 100%;
+    top: calc(100% + 15px);
     left: 50%;
     transform: translateX(-50%) translateY(10px);
     background-color: var(--white);
@@ -210,8 +209,8 @@ h4 {
     justify-content: center;
     text-align: center;
     color: var(--white);
-    padding-top: 135px;
-    /* Offset for navbar (80 + 35 + 20) */
+    padding-top: 100px;
+    /* Offset for navbar (80 + 20) */
     margin-top: 0;
 }
 
