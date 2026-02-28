@@ -246,6 +246,31 @@ h4 {
     box-shadow: var(--shadow-lg);
 }
 
+/* Compact Hero for Subpages */
+.hero.hero-small {
+    height: 30vh;
+    min-height: 280px;
+}
+
+.hero.hero-small .main-title {
+    font-size: 2.5rem;
+    padding: 8px 25px;
+    margin-bottom: 1rem;
+    letter-spacing: 6px;
+}
+
+.hero.hero-small .hero-subtitle h2 {
+    font-size: 1.6rem;
+}
+
+.hero.hero-small .hero-subtitle h3 {
+    font-size: 1.2rem;
+}
+
+.hero.hero-small .hero-subtitle h4 {
+    font-size: 1rem;
+}
+
 .hero-subtitle {
     display: flex;
     flex-direction: column;
