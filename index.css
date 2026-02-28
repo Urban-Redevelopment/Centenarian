@@ -275,37 +275,39 @@ h4 {
     display: flex;
     flex-direction: column;
     gap: 0.15rem;
+    /* Shrunk from 0.2rem */
+    background: rgba(0, 0, 0, 0.4);
     display: inline-flex;
-    padding: 0;
-    align-items: center;
-    /* Center the specific lines of text */
+    padding: 6px 15px;
+    /* Shrunk from 8px 20px */
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .hero-subtitle h2 {
-    font-size: 0.8rem;
+    font-size: 0.95rem;
+    /* Shrunk from 1.2rem */
     font-weight: 300;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
     color: rgba(255, 255, 255, 0.95);
     margin-bottom: 0;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    /* Needed since background is removed */
 }
 
 .hero-subtitle h3 {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
+    /* Shrunk from 1rem */
     font-weight: 400;
     color: rgba(255, 255, 255, 0.85);
     margin-bottom: 0;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero-subtitle h4 {
-    font-size: 0.65rem;
+    font-size: 0.7rem;
+    /* Shrunk from 0.9rem */
     font-weight: 500;
     color: var(--accent-color);
-    margin-bottom: 0;
+    margin-bottom: 0.15rem;
     letter-spacing: 2px;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* =========================================
