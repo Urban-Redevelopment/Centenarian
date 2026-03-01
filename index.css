@@ -199,7 +199,8 @@ h4 {
     position: relative;
     height: 100vh;
     min-height: 600px;
-    background-image: url('https://lh3.googleusercontent.com/sitesv/APaQ0SS7FKbmQx9Sbq7HH5PeVb9_LacSgYNr1NhOb4GieFntugEATJQfS-7hMzqq7qNtrivDzWUZAAL6bGIGNCAKQeMIaZGp7JqMekc7Bh1CAq_k8GjOIiejl0rTe7tfUWU3ZoYpcplikqRuvW_2o96wRDirurf3ibWjcDuTp2mG3E4x5DkIRDK5xkuwHC4=w16383');
+    background-image: url('hero-bg.webp');
+    /* Update to use local cached image */
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
