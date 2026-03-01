@@ -391,7 +391,11 @@ section {
     left: 50px;
     height: 100%;
     width: 2px;
-    background: rgba(26, 95, 122, 0.2);
+    background: linear-gradient(to bottom, 
+        transparent, 
+        rgba(26, 95, 122, 0.4) 10%, 
+        rgba(26, 95, 122, 0.4) 90%, 
+        transparent);
 }
 
 .timeline-item {
@@ -413,15 +417,15 @@ section {
     border-radius: 50%;
     background-color: var(--primary-light);
     border: 3px solid var(--white);
-    box-shadow: 0 0 0 3px rgba(26, 95, 122, 0.2);
+    box-shadow: 0 0 0 3px rgba(26, 95, 122, 0.15);
     transition: var(--transition);
     z-index: 2;
 }
 
 .timeline-item:hover .timeline-dot {
     background-color: var(--accent-color);
-    box-shadow: 0 0 0 4px rgba(255, 176, 55, 0.3);
-    transform: scale(1.2);
+    box-shadow: 0 0 20px rgba(255, 176, 55, 0.6), 0 0 0 4px rgba(255, 176, 55, 0.2);
+    transform: scale(1.3);
 }
 
 .highlight-dot {
@@ -436,40 +440,55 @@ section {
 }
 
 .timeline-content {
-    background: var(--white);
-    padding: 1.5rem;
-    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 1.8rem;
+    border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
-    border-left: 4px solid var(--primary-light);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-left: 5px solid var(--primary-light);
     transition: var(--transition);
 }
 
 .timeline-content:hover {
-    box-shadow: var(--shadow-md);
-    transform: translateX(5px);
+    box-shadow: var(--shadow-lg);
+    transform: translateX(8px) translateY(-5px);
+    background: rgba(255, 255, 255, 0.9);
 }
 
 .timeline-content h3 {
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
+    margin-bottom: 1.2rem;
+    font-size: 1.3rem;
     line-height: 1.4;
+    color: var(--primary-dark);
 }
 
 .btn-link {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    background-color: rgba(26, 95, 122, 0.08);
+    gap: 10px;
+    background: rgba(26, 95, 122, 0.05);
     color: var(--primary-color);
-    padding: 0.5rem 1rem;
-    border-radius: var(--radius-full);
-    font-size: 0.9rem;
-    font-weight: 500;
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--radius-md);
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1px solid rgba(26, 95, 122, 0.1);
+    transition: var(--transition);
+}
+
+.btn-link i {
+    font-size: 1.1rem;
+    opacity: 0.8;
 }
 
 .btn-link:hover {
     background-color: var(--primary-color);
     color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(26, 95, 122, 0.2);
+    border-color: var(--primary-color);
 }
 
 .text-link {
@@ -487,10 +506,9 @@ section {
 
 .link-list {
     display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-    margin-top: -0.5rem;
-    /* Pull up closer to the h3 taking account of its bottom margin */
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 0.5rem;
 }
 
 .link-list .text-link {
