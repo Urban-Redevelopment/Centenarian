@@ -472,6 +472,31 @@ section {
     color: var(--white);
 }
 
+.text-link {
+    color: var(--primary-color);
+    text-decoration: underline;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-left: 0.5rem;
+    transition: var(--transition);
+}
+
+.text-link:hover {
+    color: var(--secondary-color);
+}
+
+.link-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-top: -0.5rem;
+    /* Pull up closer to the h3 taking account of its bottom margin */
+}
+
+.link-list .text-link {
+    margin-left: 0;
+}
+
 /* =========================================
    Footer
    ========================================= */
