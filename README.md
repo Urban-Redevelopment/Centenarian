@@ -4,7 +4,7 @@ The Centenarian website is live and functional on GitHub Pages.
 
 ## Project Overview
 This project represents the urban redevelopment project for:
-**臺北市士林區百齡段四小段86-2號等17筆土地 成立大會**
+**臺北市士林區百齡段四小段86-2地號等17筆土地 成立大會**
 
 ## Deployment Details
 - **Live URL**: [https://urban-redevelopment.github.io/Centenarian/](https://urban-redevelopment.github.io/Centenarian/)
