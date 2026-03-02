@@ -247,15 +247,16 @@ h4 {
 .hero-main-title,
 .main-title {
     font-size: 3.5rem;
-    font-weight: 900;
+    font-weight: 900 !important;
     letter-spacing: 12px;
     text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
-    color: var(--white) !important;
+    color: #ffffff !important;
     margin-bottom: 1.5rem;
     background: transparent !important;
     padding: 0 !important;
     box-shadow: none !important;
     border-radius: 0 !important;
+    display: inline-block;
 }
 
 /* Compact Hero for Subpages */
