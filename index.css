@@ -235,6 +235,24 @@ h4 {
     align-items: center;
 }
 
+.hero-unit-title {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: var(--accent-color);
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.hero-main-title {
+    font-size: 3.5rem;
+    font-weight: 900;
+    letter-spacing: 12px;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    color: var(--white);
+    margin-bottom: 0;
+}
+
 .main-title {
     font-size: 3.5rem;
     font-weight: 900;
@@ -391,11 +409,11 @@ section {
     left: 50px;
     height: 100%;
     width: 2px;
-    background: linear-gradient(to bottom, 
-        transparent, 
-        rgba(26, 95, 122, 0.4) 10%, 
-        rgba(26, 95, 122, 0.4) 90%, 
-        transparent);
+    background: linear-gradient(to bottom,
+            transparent,
+            rgba(26, 95, 122, 0.4) 10%,
+            rgba(26, 95, 122, 0.4) 90%,
+            transparent);
 }
 
 .timeline-item {
