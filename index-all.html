@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>臺北市士林區百齡段四小段86-2地號等17筆土地 更新單元 都市更新會</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">首頁</a></li>
+                <li><a href="history.html">沿革</a></li>
+                <li class="dropdown">
+                    <a href="downloads.html" class="dropdown-toggle">表單下載 <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="javascript:void(0)"
+                                onclick="showDocument('更新會成立大會通知書', '19YXruhMaPymbjEySe0UxMO4iB1VFflrz', 'pdf')">更新會成立大會通知書</a>
+                        </li>
+                        <li><a href="javascript:void(0)"
+                                onclick="showDocument('成立大會委託書', '1J8eedcomvyj_6OitfTfx7foeP6lSbtlA', 'pdf')">成立大會委託書下載</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="articles.html">更新會章程</a></li>
+                <li><a href="qa.html">都市更新問答集</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content fade-in-up">
+            <p class="hero-unit-title">臺北市士林區百齡段四小段 86-2 地號等 17 筆土地更新單元</p>
+            <h1 class="hero-main-title">都市更新會</h1>
+        </div>
+    </header>
+
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        <div class="marquee">
+            <p><i class="fa-solid fa-bullhorn"></i> 最新公告：2026年03月07日 將舉辦成立大會，敬請留意通知書與委託書下載資訊。</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container">
+
+        <!-- Purpose Section -->
+        <section class="purpose-section fade-in-up">
+            <h2 class="section-title">成立宗旨</h2>
+            <div class="purpose-text">
+                <p>● 提升居住安全與耐震能力</p>
+                <p>● 改善居住環境品質</p>
+                <p>● 保障地主與住戶權益</p>
+                <p>● 促進社區長遠發展</p>
+            </div>
+        </section>
+
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info">
+                <h3>臺北市士林區百齡段四小段86-2地號等17筆土地更新單元</h3>
+                <h2>都市更新會</h2>
+                <div class="contact-details">
+                    <p><i class="fa-solid fa-user-tie"></i> <strong>理事長：</strong> (待定)</p>
+                    <p><i class="fa-solid fa-location-dot"></i> <strong>聯絡地址：</strong> (待定)</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 臺北市士林區百齡段四小段86-2地號等17筆土地更新單元 都市更新會. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Document Viewer Overlay -->
+    <div id="documentOverlay" class="document-viewer-overlay">
+        <div class="overlay-header">
+            <h3 class="overlay-title">
+                <i id="overlayIcon" class="fa-solid fa-file-pdf"></i>
+                <span id="overlayTitle">載入中...</span>
+            </h3>
+            <div class="overlay-actions">
+                <a id="overlayDownloadBtn" href="#" target="_blank" class="btn-download">
+                    <i class="fa-solid fa-download"></i> <span id="overlayBtnText">直接下載</span>
+                </a>
+                <button onclick="closeDocumentOverlay()" class="btn-close-overlay">
+                    <i class="fa-solid fa-xmark"></i> 返回
+                </button>
+            </div>
+        </div>
+        <div class="overlay-content">
+            <iframe id="overlayIframe" src=""></iframe>
+        </div>
+    </div>
+
+    <!-- Simple script for scroll animations and overlay -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in-up').forEach(el => {
+                observer.observe(el);
+            });
+
+            document.querySelectorAll('.timeline-item').forEach((el, index) => {
+                el.style.transitionDelay = `${index * 0.15}s`;
+                el.classList.add('fade-in-up');
+                observer.observe(el);
+            });
+
+            document.querySelectorAll('.card').forEach((el, index) => {
+                el.style.transitionDelay = `${index * 0.15}s`;
+                el.classList.add('fade-in-up');
+                observer.observe(el);
+            });
+        });
+
+        // Overlay Functions
+        function showDocument(title, driveId, type) {
+            const overlay = document.getElementById('documentOverlay');
+            const overlayTitle = document.getElementById('overlayTitle');
+            const overlayIcon = document.getElementById('overlayIcon');
+            const overlayIframe = document.getElementById('overlayIframe');
+            const downloadBtn = document.getElementById('overlayDownloadBtn');
+            const btnText = document.getElementById('overlayBtnText');
+
+            // Update content
+            overlayTitle.textContent = title;
+            overlayIframe.src = `https://drive.google.com/file/d/${driveId}/preview`;
+            downloadBtn.href = `https://drive.google.com/file/d/${driveId}/view?usp=drive_link`;
+
+            // Update icons and text based on type
+            if (type === 'word') {
+                overlayIcon.className = 'fa-solid fa-file-word';
+                btnText.textContent = '直接預覽與下載 Word';
+            } else {
+                overlayIcon.className = 'fa-solid fa-file-pdf';
+                btnText.textContent = '直接預覽與下載';
+            }
+
+            // Show overlay and prevent body scrolling
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDocumentOverlay() {
+            const overlay = document.getElementById('documentOverlay');
+            const overlayIframe = document.getElementById('overlayIframe');
+
+            // Hide overlay and restore body scrolling
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+
+            // Clear iframe source to stop loading/playback in background
+            setTimeout(() => {
+                overlayIframe.src = '';
+            }, 300);
+        }
+    </script>
+</body>
+
+</html>
