@@ -27,13 +27,13 @@
                             class="fa-solid fa-chevron-down"></i></a>
                     <ul class="dropdown-menu">
                         <li><a href="javascript:void(0)"
-                                onclick="openDocumentOverlay('更新會成立大會通知書', '19YXruhMaPymbjEySe0UxMO4iB1VFflrz', 'pdf')">更新會成立大會通知書</a>
+                                onclick="showDocument('更新會成立大會通知書', '19YXruhMaPymbjEySe0UxMO4iB1VFflrz', 'pdf')">更新會成立大會通知書</a>
                         </li>
                         <li><a href="javascript:void(0)"
-                                onclick="openDocumentOverlay('成立大會委託書', '1J8eedcomvyj_6OitfTfx7foeP6lSbtlA', 'pdf')">成立大會委託書下載</a>
+                                onclick="showDocument('成立大會委託書', '1J8eedcomvyj_6OitfTfx7foeP6lSbtlA', 'pdf')">成立大會委託書下載</a>
                         </li>
                         <li><a href="javascript:void(0)"
-                                onclick="openDocumentOverlay('成立大會委託書（範例）', '1DDfQWDbcqTzsPFBeUP8L-rmPGRAoYaPf', 'pdf')">成立大會委託書（範例）</a>
+                                onclick="showDocument('成立大會委託書（範例）', '1DDfQWDbcqTzsPFBeUP8L-rmPGRAoYaPf', 'pdf')">成立大會委託書（範例）</a>
                         </li>
                     </ul>
                 </li>
@@ -65,51 +65,39 @@
         <section class="fade-in-up visible">
             <h2 class="section-title">表單內容</h2>
 
-            <!-- Item 1: Notice -->
+            <!-- Item 1: Meeting Notice -->
             <div id="notice" class="download-item">
                 <div class="download-header">
-                    <h3 class="download-title"><i class="fa-solid fa-file-pdf"></i> 更新會成立大會通知書</h3>
-                    <button onclick="openDocumentOverlay('更新會成立大會通知書', '19YXruhMaPymbjEySe0UxMO4iB1VFflrz', 'pdf')"
-                        class="btn-download"
-                        style="background-color: var(--secondary-color); color: var(--white); cursor: pointer; border: none; font-family: inherit;">
-                        <i class="fa-solid fa-eye"></i> 線上預覽
-                    </button>
-                    <a href="https://drive.google.com/file/d/19YXruhMaPymbjEySe0UxMO4iB1VFflrz/view?usp=drive_link"
-                        target="_blank" class="btn-download">
-                        <i class="fa-solid fa-download"></i> 直接下載 PDF
-                    </a>
+                    <h3 class="download-title">更新會成立大會通知書</h3>
+                    <div class="link-list">
+                        <a href="javascript:void(0)"
+                            onclick="showDocument('更新會成立大會通知書', '19YXruhMaPymbjEySe0UxMO4iB1VFflrz', 'pdf')"
+                            class="btn-link"><i class="fa-solid fa-file-pdf"></i> 線上預覽與下載</a>
+                    </div>
                 </div>
             </div>
 
             <!-- Item 2: Proxy -->
             <div id="proxy" class="download-item">
                 <div class="download-header">
-                    <h3 class="download-title"><i class="fa-solid fa-file-signature"></i> 成立大會委託書</h3>
-                    <button onclick="openDocumentOverlay('成立大會委託書', '1J8eedcomvyj_6OitfTfx7foeP6lSbtlA', 'pdf')"
-                        class="btn-download"
-                        style="background-color: var(--secondary-color); color: var(--white); cursor: pointer; border: none; font-family: inherit;">
-                        <i class="fa-solid fa-eye"></i> 線上預覽
-                    </button>
-                    <a href="https://drive.google.com/file/d/1J8eedcomvyj_6OitfTfx7foeP6lSbtlA/view?usp=drive_link"
-                        target="_blank" class="btn-download">
-                        <i class="fa-solid fa-download"></i> 直接下載 PDF
-                    </a>
+                    <h3 class="download-title">成立大會委託書</h3>
+                    <div class="link-list">
+                        <a href="javascript:void(0)"
+                            onclick="showDocument('成立大會委託書', '1J8eedcomvyj_6OitfTfx7foeP6lSbtlA', 'pdf')"
+                            class="btn-link"><i class="fa-solid fa-file-signature"></i> 線上預覽與下載</a>
+                    </div>
                 </div>
             </div>
 
             <!-- Item 3: Proxy Example -->
             <div id="proxy-example" class="download-item">
                 <div class="download-header">
-                    <h3 class="download-title"><i class="fa-solid fa-file-circle-check"></i> 成立大會委託書（範例）</h3>
-                    <button onclick="openDocumentOverlay('成立大會委託書（範例）', '1DDfQWDbcqTzsPFBeUP8L-rmPGRAoYaPf', 'pdf')"
-                        class="btn-download"
-                        style="background-color: var(--secondary-color); color: var(--white); cursor: pointer; border: none; font-family: inherit;">
-                        <i class="fa-solid fa-eye"></i> 線上預覽
-                    </button>
-                    <a href="https://drive.google.com/file/d/1DDfQWDbcqTzsPFBeUP8L-rmPGRAoYaPf/view?usp=drive_link"
-                        target="_blank" class="btn-download">
-                        <i class="fa-solid fa-download"></i> 直接下載 PDF
-                    </a>
+                    <h3 class="download-title">成立大會委託書（範例）</h3>
+                    <div class="link-list">
+                        <a href="javascript:void(0)"
+                            onclick="showDocument('成立大會委託書（範例）', '1DDfQWDbcqTzsPFBeUP8L-rmPGRAoYaPf', 'pdf')"
+                            class="btn-link"><i class="fa-solid fa-file-circle-check"></i> 線上預覽與下載</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -180,7 +168,7 @@
         });
 
         // Overlay Functions
-        function openDocumentOverlay(title, driveId, type) {
+        function showDocument(title, driveId, type) {
             const overlay = document.getElementById('documentOverlay');
             const overlayTitle = document.getElementById('overlayTitle');
             const overlayIcon = document.getElementById('overlayIcon');

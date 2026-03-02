@@ -26,10 +26,10 @@
                     <a href="downloads.html" class="dropdown-toggle">表單下載 <i class="fa-solid fa-chevron-down"></i></a>
                     <ul class="dropdown-menu">
                         <li><a href="javascript:void(0)"
-                                onclick="openDocumentOverlay('更新會成立大會通知書', '14uZ_hAbhzh3TUvnK38g-MwdL3AjYZsJN', 'pdf')">更新會成立大會通知書</a>
+                                onclick="showDocument('更新會成立大會通知書', '19YXruhMaPymbjEySe0UxMO4iB1VFflrz', 'pdf')">更新會成立大會通知書</a>
                         </li>
                         <li><a href="javascript:void(0)"
-                                onclick="openDocumentOverlay('成立大會委託書', '1zunl77svv8vf628GS_qQIbWuYi9aeeai', 'pdf')">成立大會委託書下載</a>
+                                onclick="showDocument('成立大會委託書', '1J8eedcomvyj_6OitfTfx7foeP6lSbtlA', 'pdf')">成立大會委託書下載</a>
                         </li>
                     </ul>
                 </li>
@@ -146,7 +146,7 @@
         });
 
         // Overlay Functions
-        function openDocumentOverlay(title, driveId, type) {
+        function showDocument(title, driveId, type) {
             const overlay = document.getElementById('documentOverlay');
             const overlayTitle = document.getElementById('overlayTitle');
             const overlayIcon = document.getElementById('overlayIcon');

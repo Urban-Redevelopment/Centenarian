@@ -26,10 +26,10 @@
                     <a href="downloads.html" class="dropdown-toggle">表單下載 <i class="fa-solid fa-chevron-down"></i></a>
                     <ul class="dropdown-menu">
                         <li><a href="javascript:void(0)"
-                                onclick="openDocumentOverlay('更新會成立大會通知書', '14uZ_hAbhzh3TUvnK38g-MwdL3AjYZsJN', 'pdf')">更新會成立大會通知書</a>
+                                onclick="showDocument('更新會成立大會通知書', '19YXruhMaPymbjEySe0UxMO4iB1VFflrz', 'pdf')">更新會成立大會通知書</a>
                         </li>
                         <li><a href="javascript:void(0)"
-                                onclick="openDocumentOverlay('成立大會委託書', '1zunl77svv8vf628GS_qQIbWuYi9aeeai', 'pdf')">成立大會委託書下載</a>
+                                onclick="showDocument('成立大會委託書', '1J8eedcomvyj_6OitfTfx7foeP6lSbtlA', 'pdf')">成立大會委託書下載</a>
                         </li>
                     </ul>
                 </li>
@@ -60,18 +60,12 @@
         <!-- Articles Content Section -->
         <section class="purpose-section fade-in-up visible">
             <h2 class="section-title">更新會章程</h2>
-            <div class="purpose-text" style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem;">
-                <p style="font-size: 1.1rem; color: var(--text-dark);">臺北市士林區百齡段四小段 86-2 地號等 17 筆土地更新單元 都市更新會</p>
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
-                    <button onclick="openDocumentOverlay('更新會章程', '1HcolR_6RvWuhK_EokDi5a6EQ7jerfgBa', 'pdf')"
-                        class="btn-download"
-                        style="background-color: var(--secondary-color); color: var(--white); cursor: pointer; border: none; font-family: inherit; padding: 0.8rem 1.5rem; border-radius: 8px; font-weight: 500; display: flex; align-items: center; gap: 10px;">
-                        <i class="fa-solid fa-eye"></i> 線上預覽
-                    </button>
-                    <a href="https://drive.google.com/file/d/1HcolR_6RvWuhK_EokDi5a6EQ7jerfgBa/view?usp=drive_link"
-                        target="_blank" class="btn-download"
-                        style="background-color: var(--primary-color); color: var(--white); text-decoration: none; padding: 0.8rem 1.5rem; border-radius: 8px; font-weight: 500; display: flex; align-items: center; gap: 10px;">
-                        <i class="fa-solid fa-download"></i> 直接下載 PDF
+            <div class="purpose-text" style="display: flex; justify-content: center;">
+                <div class="link-list">
+                    <a href="javascript:void(0)"
+                        onclick="showDocument('更新會章程', '1HcolR_6RvWuhK_EokDi5a6EQ7jerfgBa', 'pdf')" class="btn-link"
+                        style="font-size: 1.1rem; padding: 0.8rem 1.6rem;">
+                        <i class="fa-solid fa-file-pdf"></i> 線上預覽與下載
                     </a>
                 </div>
             </div>
@@ -141,7 +135,7 @@
         });
 
         // Overlay Functions
-        function openDocumentOverlay(title, driveId, type) {
+        function showDocument(title, driveId, type) {
             const overlay = document.getElementById('documentOverlay');
             const overlayTitle = document.getElementById('overlayTitle');
             const overlayIcon = document.getElementById('overlayIcon');
