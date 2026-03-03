@@ -32,6 +32,9 @@
                 <li><a href="articles.html">更新會章程</a></li>
                 <li><a href="qa.html">都市更新問答集</a></li>
             </ul>
+            <div class="nav-toggle" id="navToggle">
+                <i class="fa-solid fa-bars"></i>
+            </div>
         </div>
     </nav>
 
@@ -76,8 +79,10 @@
                         <h3>市府同意籌組更新會</h3>
                         <div class="link-list">
                             <a href="javascript:void(0)"
-                                onclick="showDocument('市府同意籌組更新會 (核准函文)', '1hf_Dxk55i6sqtq_l45ZXPm3366rmQwAH', 'pdf')"
-                                class="btn-link"><i class="fa-solid fa-file-pdf"></i> 核准函文</a>
+                                onclick="showDocument('114.02.05 更新單元劃定案核定函', '18fT-o9V_YPrI5A8o8s3uF7-p8K6YNoMh', 'pdf')"
+                                class="btn-link">
+                                <i class="fa-solid fa-file-pdf"></i> 線上預覽
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -89,16 +94,16 @@
                         <div class="link-list">
                             <a href="javascript:void(0)"
                                 onclick="showDocument('說明會簡報', '1islWnU7gLhFDwLHQubw4qvovCCd6T55u', 'pdf')"
-                                class="btn-link"><i class="fa-solid fa-file-powerpoint"></i> 說明會簡報</a>
+                                class="btn-link"><i class="fa-solid fa-file-powerpoint"></i> 線上預覽</a>
                             <a href="javascript:void(0)"
                                 onclick="showDocument('核准函文', '1WDykXbWvvYbs8xBRmYOGa9aB9XX_8sHE', 'pdf')"
-                                class="btn-link"><i class="fa-solid fa-file-pdf"></i> 核准函文</a>
+                                class="btn-link"><i class="fa-solid fa-file-pdf"></i> 線上預覽</a>
                             <a href="javascript:void(0)"
                                 onclick="showDocument('範圍圖', '1pP07srdCMMOYrQ2HBV4XIb76YYMGXySH', 'pdf')"
-                                class="btn-link"><i class="fa-solid fa-map-location-dot"></i> 範圍圖</a>
+                                class="btn-link"><i class="fa-solid fa-map-location-dot"></i> 線上預覽</a>
                             <a href="javascript:void(0)"
                                 onclick="showDocument('檢討報告書', '1cB-w4TAyGkcuGzTK4WvTcOWXHytij476', 'pdf')"
-                                class="btn-link"><i class="fa-solid fa-file-lines"></i> 檢討報告書</a>
+                                class="btn-link"><i class="fa-solid fa-file-lines"></i> 線上預覽</a>
                         </div>
                     </div>
                 </div>
@@ -117,10 +122,10 @@
                         <div class="link-list">
                             <a href="javascript:void(0)"
                                 onclick="showDocument('開會通知書', '12i86UINaV-wQXWgoS6GYQE3iQcG8utFs', 'pdf')"
-                                class="btn-link"><i class="fa-solid fa-file-pdf"></i> 開會通知書</a>
+                                class="btn-link"><i class="fa-solid fa-file-pdf"></i> 線上預覽</a>
                             <a href="javascript:void(0)"
                                 onclick="showDocument('會議記錄', '1YC_o5Xwzua-Kv7JRRX_vop37AO43kIwX', 'pdf')"
-                                class="btn-link"><i class="fa-solid fa-file-lines"></i> 會議記錄</a>
+                                class="btn-link"><i class="fa-solid fa-file-lines"></i> 線上預覽</a>
                         </div>
                     </div>
                 </div>
@@ -132,7 +137,7 @@
                         <div class="link-list">
                             <a href="javascript:void(0)"
                                 onclick="showDocument('說明會簡報', '1p22u0cqXy4XeTVD_JMYdThmJ6SRpwShr', 'pdf')"
-                                class="btn-link"><i class="fa-solid fa-file-powerpoint"></i> 說明會簡報</a>
+                                class="btn-link"><i class="fa-solid fa-file-powerpoint"></i> 線上預覽</a>
                         </div>
                     </div>
                 </div>
@@ -144,7 +149,7 @@
                         <div class="link-list">
                             <a href="javascript:void(0)"
                                 onclick="showDocument('說明會簡報', '18hSJUqrJn2RUYkGZWPkUEnMZq42EGNAO', 'pdf')"
-                                class="btn-link"><i class="fa-solid fa-file-powerpoint"></i> 說明會簡報</a>
+                                class="btn-link"><i class="fa-solid fa-file-powerpoint"></i> 線上預覽</a>
                         </div>
                     </div>
                 </div>
@@ -159,9 +164,6 @@
                     <span id="overlayTitle">載入中...</span>
                 </h3>
                 <div class="overlay-actions">
-                    <a id="overlayDownloadBtn" href="#" target="_blank" class="btn-download">
-                        <i class="fa-solid fa-download"></i> <span id="overlayBtnText">直接下載</span>
-                    </a>
                     <button onclick="closeDocumentOverlay()" class="btn-close-overlay">
                         <i class="fa-solid fa-xmark"></i> 返回
                     </button>
@@ -220,27 +222,22 @@
             });
         });
 
-        // Function to dynamically load a document into the full-screen overlay
+        // Overlay Functions
         function showDocument(title, driveId, type) {
             const overlay = document.getElementById('documentOverlay');
             const overlayTitle = document.getElementById('overlayTitle');
             const overlayIcon = document.getElementById('overlayIcon');
             const overlayIframe = document.getElementById('overlayIframe');
-            const downloadBtn = document.getElementById('overlayDownloadBtn');
-            const btnText = document.getElementById('overlayBtnText');
 
             // Update content
             overlayTitle.textContent = title;
             overlayIframe.src = `https://drive.google.com/file/d/${driveId}/preview`;
-            downloadBtn.href = `https://drive.google.com/file/d/${driveId}/view?usp=drive_link`;
 
-            // Update icons and text based on type
+            // Update icons based on type
             if (type === 'word') {
                 overlayIcon.className = 'fa-solid fa-file-word';
-                btnText.textContent = '直接預覽與下載 Word';
             } else {
                 overlayIcon.className = 'fa-solid fa-file-pdf';
-                btnText.textContent = '直接預覽與下載';
             }
 
             // Show overlay and prevent body scrolling
@@ -260,6 +257,24 @@
             setTimeout(() => {
                 overlayIframe.src = '';
             }, 300);
+        }
+
+        // Mobile Nav Toggle
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                const icon = navToggle.querySelector('i');
+                if (navLinks.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-xmark');
+                } else {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                }
+            });
         }
     </script>
 </body>

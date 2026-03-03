@@ -36,6 +36,9 @@
                 <li><a href="articles.html">更新會章程</a></li>
                 <li><a href="qa.html" class="active">都市更新問答集</a></li>
             </ul>
+            <div class="nav-toggle" id="navToggle">
+                <i class="fa-solid fa-bars"></i>
+            </div>
         </div>
     </nav>
 
@@ -64,6 +67,25 @@
         </section>
 
     </main>
+
+    <!-- Document Overlay -->
+    <div id="documentOverlay" class="document-overlay">
+        <div class="document-overlay-content">
+            <div class="overlay-header">
+                <i id="overlayIcon" class="fa-solid"></i>
+                <h3 id="overlayTitle"></h3>
+                <button onclick="closeDocumentOverlay()" class="btn-close-overlay">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <iframe id="overlayIframe" src="" frameborder="0"></iframe>
+            <div class="overlay-actions">
+                <button onclick="closeDocumentOverlay()" class="btn-close-overlay">
+                    <i class="fa-solid fa-xmark"></i> 返回
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -102,6 +124,61 @@
 
             document.querySelectorAll('.fade-in-up').forEach(el => {
                 observer.observe(el);
+            });
+        });
+
+        // Overlay Functions
+        function showDocument(title, driveId, type) {
+            const overlay = document.getElementById('documentOverlay');
+            const overlayTitle = document.getElementById('overlayTitle');
+            const overlayIcon = document.getElementById('overlayIcon');
+            const overlayIframe = document.getElementById('overlayIframe');
+
+            // Update content
+            overlayTitle.textContent = title;
+            overlayIframe.src = `https://drive.google.com/file/d/${driveId}/preview`;
+
+            // Update icons based on type
+            if (type === 'word') {
+                overlayIcon.className = 'fa-solid fa-file-word';
+            } else {
+                overlayIcon.className = 'fa-solid fa-file-pdf';
+            }
+
+            // Show overlay and prevent body scrolling
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDocumentOverlay() {
+            const overlay = document.getElementById('documentOverlay');
+            const overlayIframe = document.getElementById('overlayIframe');
+
+            // Hide overlay and restore body scrolling
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+
+            // Clear iframe source to stop loading/playback in background
+            setTimeout(() => {
+                overlayIframe.src = '';
+            }, 300);
+        }
+
+        // Mobile Nav Toggle
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                const icon = navToggle.querySelector('i');
+                if (navLinks.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-xmark');
+                } else {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                }
             });
         });
     </script>

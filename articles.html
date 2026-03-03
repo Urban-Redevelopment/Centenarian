@@ -36,6 +36,9 @@
                 <li><a href="articles.html" class="active">更新會章程</a></li>
                 <li><a href="qa.html">都市更新問答集</a></li>
             </ul>
+            <div class="nav-toggle" id="navToggle">
+                <i class="fa-solid fa-bars"></i>
+            </div>
         </div>
     </nav>
 
@@ -65,7 +68,7 @@
                     <a href="javascript:void(0)"
                         onclick="showDocument('更新會章程草案', '1HcolR_6RvWuhK_EokDi5a6EQ7jerfgBa', 'pdf')" class="btn-link"
                         style="font-size: 1.1rem; padding: 0.8rem 1.6rem;">
-                        <i class="fa-solid fa-file-pdf"></i> 線上預覽與下載
+                        <i class="fa-solid fa-file-pdf"></i> 線上預覽
                     </a>
                 </div>
             </div>
@@ -98,9 +101,6 @@
                 <span id="overlayTitle">載入中...</span>
             </h3>
             <div class="overlay-actions">
-                <a id="overlayDownloadBtn" href="#" target="_blank" class="btn-download">
-                    <i class="fa-solid fa-download"></i> <span id="overlayBtnText">直接下載</span>
-                </a>
                 <button onclick="closeDocumentOverlay()" class="btn-close-overlay">
                     <i class="fa-solid fa-xmark"></i> 返回
                 </button>
@@ -140,21 +140,16 @@
             const overlayTitle = document.getElementById('overlayTitle');
             const overlayIcon = document.getElementById('overlayIcon');
             const overlayIframe = document.getElementById('overlayIframe');
-            const downloadBtn = document.getElementById('overlayDownloadBtn');
-            const btnText = document.getElementById('overlayBtnText');
 
             // Update content
             overlayTitle.textContent = title;
             overlayIframe.src = `https://drive.google.com/file/d/${driveId}/preview`;
-            downloadBtn.href = `https://drive.google.com/file/d/${driveId}/view?usp=drive_link`;
 
-            // Update icons and text based on type
+            // Update icons based on type
             if (type === 'word') {
                 overlayIcon.className = 'fa-solid fa-file-word';
-                btnText.textContent = '直接預覽與下載 Word';
             } else {
                 overlayIcon.className = 'fa-solid fa-file-pdf';
-                btnText.textContent = '直接預覽與下載';
             }
 
             // Show overlay and prevent body scrolling
@@ -174,6 +169,24 @@
             setTimeout(() => {
                 overlayIframe.src = '';
             }, 300);
+        }
+
+        // Mobile Nav Toggle
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                const icon = navToggle.querySelector('i');
+                if (navLinks.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-xmark');
+                } else {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                }
+            });
         }
     </script>
 </body>
