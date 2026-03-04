@@ -71,22 +71,21 @@
 
     </main>
 
-    <!-- Document Overlay -->
-    <div id="documentOverlay" class="document-overlay">
-        <div class="document-overlay-content">
-            <div class="overlay-header">
-                <i id="overlayIcon" class="fa-solid"></i>
-                <h3 id="overlayTitle"></h3>
-                <button onclick="closeDocumentOverlay()" class="btn-close-overlay">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-            <iframe id="overlayIframe" src="" frameborder="0"></iframe>
+    <!-- Document Viewer Overlay -->
+    <div id="documentOverlay" class="document-viewer-overlay">
+        <div class="overlay-header">
+            <h3 class="overlay-title">
+                <i id="overlayIcon" class="fa-solid fa-file-pdf"></i>
+                <span id="overlayTitle">載入中...</span>
+            </h3>
             <div class="overlay-actions">
                 <button onclick="closeDocumentOverlay()" class="btn-close-overlay">
                     <i class="fa-solid fa-xmark"></i> 返回
                 </button>
             </div>
+        </div>
+        <div class="overlay-content">
+            <iframe id="overlayIframe" src=""></iframe>
         </div>
     </div>
 
