@@ -208,8 +208,7 @@ h4 {
     position: relative;
     height: 100vh;
     min-height: 600px;
-    background-color: #113F52;
-    /* Darker teal fallback */
+    background-color: var(--primary-color);
     background-image: url('hero-teal-gradient.png');
     background-size: cover;
     background-position: center;
