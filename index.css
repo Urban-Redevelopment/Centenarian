@@ -547,6 +547,27 @@ footer {
     position: relative;
 }
 
+.visitor-counter {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-full);
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 10;
+}
+
+.visitor-counter img {
+    height: 20px;
+    border-radius: 3px;
+}
+
 footer::before {
     content: '';
     position: absolute;
@@ -753,6 +774,13 @@ footer::before {
     .contact-details {
         flex-direction: column;
         gap: 1rem;
+    }
+
+    .visitor-counter {
+        position: static;
+        justify-content: center;
+        margin: 0 auto 2rem auto;
+        width: fit-content;
     }
 }
 
