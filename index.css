@@ -208,7 +208,9 @@ h4 {
     position: relative;
     height: 100vh;
     min-height: 600px;
-    background-image: url('hero-pattern.png');
+    background-color: #113F52;
+    /* Darker teal fallback */
+    background-image: url('hero-teal-gradient.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
