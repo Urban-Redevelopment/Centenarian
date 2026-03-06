@@ -964,7 +964,7 @@ iframe {
     position: relative;
 }
 
-/* Mask to hide Google Drive popout icon (Only on larger screens) */
+/* Mask to hide Google Drive popout icon on larger screens */
 @media (min-width: 769px) {
     .overlay-content::after {
         content: '';
@@ -977,6 +977,24 @@ iframe {
         /* Default Google Drive M3 Dark Theme header color */
         z-index: 100;
         border-radius: 4px;
+    }
+}
+
+/* Mask to hide Google Drive popout icon on mobile screens */
+@media (max-width: 768px) {
+    .overlay-content::after {
+        content: '';
+        position: absolute;
+        top: 0px;
+        /* Align to the very top edge */
+        right: 0px;
+        /* Align to the very right edge */
+        width: 55px;
+        /* Just wide enough to cover the icon */
+        height: 55px;
+        /* Just tall enough to cover the icon */
+        background-color: #131314;
+        z-index: 100;
     }
 }
 
