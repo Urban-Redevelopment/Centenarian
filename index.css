@@ -318,7 +318,7 @@ h4 {
 /* Hide announcement bar on small screens if needed or adjust */
 @media (max-width: 768px) {
     .marquee {
-        font-size: 0.9rem;
+        font-size: 1.05rem;
         animation: marquee 20s linear infinite;
     }
 }
@@ -329,7 +329,7 @@ h4 {
 .announcement-bar {
     background-color: var(--accent-color);
     color: #000;
-    padding: 0.8rem 0;
+    padding: 1rem 0;
     overflow: hidden;
     white-space: nowrap;
     position: relative;
@@ -342,7 +342,7 @@ h4 {
     padding-left: 100%;
     animation: marquee 25s linear infinite;
     font-weight: 500;
-    font-size: 1rem;
+    font-size: 1.25rem;
 }
 
 .marquee p i {
